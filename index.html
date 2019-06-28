@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<!-- ----------------------------------------------------------------------- -->
+<!--                        Author - Sandip Sadhukhan                        -->
+<!--                    Project Name - BMI Calculator                        -->
+<!-- ----------------------------------------------------------------------- -->
+
+<body>
+    <div class="main">
+        <div class="card bg-dark text-white w-50 m-auto pos">
+            <div class="card-header  text-center" id="header">
+                Always Be Healthy! Check Your BMI.
+            </div>
+            <div class="card-body">
+                <form onsubmit="return false">
+                    <div class="from-group mt-3">
+                        <label for="height" class="pb-2">Height : </label>
+                        <input type="text" id="height" placeholder="Height in Cm" class="form-control bg-dark text-white">
+                    </div>
+                    <div class="from-group my-3">
+                        <label for="weight" class=" pb-2">Weight : </label>
+                        <input type="text" id="weight" placeholder="Weight in Kg" class="form-control bg-dark text-white">
+                    </div>
+                    <button class="btn btn-primary" onclick="checkbmi();">Check BMI</button>
+                    
+                </form>
+                
+            </div>
+            <div class="card-footer text-center" id="footer">
+                <p id="result"></p>
+            </div>
+           
+        </div>
+        <p class="text-center text-white mt-3 font-weight-bold">This BMI Project is Created by <a href="https://yourwebsite.github.io/" target="_blank" class=""">Sandip Sadhukhan.</a></p>
+    </div>
+
+<!-- --------------------------- JAVASCRIPT PART --------------------------- -->
+<script>
+function checkbmi(){
+    let myheight=document.getElementById('height').value;
+    let myweight=document.getElementById('weight').value;
+    // Validation
+    if(myheight==""){
+        alert("Please Enter your height");
+    }
+    else if( myweight==""){
+        alert("Please Enter your weight");
+    }
+    else{
+    myheight=myheight/100 ;//Meter -> CentiMeter
+    let bmivalue = myweight/ Math.pow(myheight,2); //BMI Foumula
+    let health = "";
+        if(bmivalue<18.5){
+            health= "Underweight";
+        }
+        else if(bmivalue<=24.9){
+            health="Normal";
+        }
+        else{
+            health="Overweight";
+        }
+    bmivalue = Math.round(bmivalue);// float -> int
+    document.getElementById('result').innerHTML=`Your BMI is ${bmivalue} . And You are ${health} .`; 
+    if(health=="Normal"){
+        document.getElementById('footer').style="background-color:green;"
+        document.getElementById('header').style="background-color:green;"
+    }
+    else{
+        document.getElementById('footer').style="background-color:red;"
+        document.getElementById('header').style="background-color:red;" 
+    }
+    }
+}
+</script>
+</body>
+</html>

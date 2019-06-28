@@ -1,0 +1,28 @@
+html{
+    background:url('bg.jpg') no-repeat;
+    background-size: cover;
+}
+.main{
+    position: absolute;
+    top:50%;
+    width:100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    
+}
+.card{
+    box-shadow: 13px 15px 30px black;
+}
+
+#header{
+    font-size:20px;
+}
+#result{
+    font-size:20px;
+}
+
+@media only screen and (max-width:600px){
+    html{
+        background:url('bg.jpg') no-repeat center;
+    }
+}
